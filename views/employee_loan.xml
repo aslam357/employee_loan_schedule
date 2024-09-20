@@ -1,0 +1,101 @@
+ <odoo>
+ <record id="view_employee_loan_form" model="ir.ui.view">
+            <field name="name">employee.loan.form</field>
+            <field name="model">employee.loan</field>
+            <field name="arch" type="xml">
+                <form string="Employee Loan">
+         <header>
+    <field name="state" widget="statusbar" class="oe_statustext"/>
+
+    <button string="Compute Installment" type="object" name="compute_installments"  class="oe_highlight" 
+       invisible="state != 'draft'"/>
+
+    <button string="Submit Request" type="object" name="action_approve" class="oe_highlight" 
+       invisible="state != 'draft'"/>
+
+    <button string="Approve" type="object" name="action_approves" class="oe_highlight" 
+      invisible="state == 'draft'"/>
+
+    <button string="Reject" type="object" name="action_reject" class="oe_warning" 
+       invisible="state == 'draft'"/>
+</header>
+
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="department_id"/>
+                                <field name="department_manager_id"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="job_id"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name="payment_method"/>
+                                <field name="loan_amount"/>
+                                <field name="interest_amount"/>
+                                <field name="paid_amount"/>
+                                <field name="remaining_amount" readonly="1"/>
+                                <field name="installment_amount"/>
+                            </group>
+                            <group>
+                                <field name="loan_type"/>
+                                <field name="loan_date"/>
+                                <field name="term"/>
+                                <field name="end_date"/>
+                                
+                                <field name="interest_rate"/>
+                                <field name="interest_type"/>
+                                <field name="installment_count"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Transaction Reason">
+                                <group>
+                                    <field name="transaction_reason" widget="text"/>
+                                </group>
+                            </page>
+                            <page string="Installment Details">
+                                <field name="installment_line_ids">
+                                    <tree>
+                                        <field name="name" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="installment_date" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="loan_amount" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="total_interest" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="installment_amount" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="interest_amount" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                        <field name="grand_total" sum="True"  options="{'color': '#f5f5f5'}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="view_employee_loan_tree" model="ir.ui.view">
+            <field name="name">employee.loan.tree</field>
+            <field name="model">employee.loan</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Loans">
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="loan_amount"/>
+                    <field name="interest_amount"/>
+                    <field name="paid_amount"/>
+                    <field name="remaining_amount"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_employee_loan" model="ir.actions.act_window">
+            <field name="name">Employee Loans</field>
+            <field name="res_model">employee.loan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+</odoo>

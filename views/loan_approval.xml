@@ -1,0 +1,16 @@
+<odoo>
+    <record id="view_employee_form_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='353']" position="before">
+                <button name="action_loans" 
+                        type="object" 
+                        string="Loans" 
+                        class="btn-primary" 
+                        icon="fa-credit-card"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

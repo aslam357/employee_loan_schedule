@@ -1,0 +1,5 @@
+     <odoo>
+        <menuitem id="menu_employee_loan_root" name="Employee Loans" sequence="10"/>
+        <menuitem id="menu_employee_loan_type" name="Loan Types" parent="menu_employee_loan_root" action="action_employee_loan_type" sequence="1"/>
+        <menuitem id="menu_employee_loan_request" name="Loan Requests" parent="menu_employee_loan_root" action="action_employee_loan" sequence="2"/>
+   </odoo>

@@ -1,0 +1,51 @@
+<odoo>
+    <data>
+        <record id="view_employee_loan_type_form" model="ir.ui.view">
+            <field name="name">employee.loan.type.form</field>
+            <field name="model">employee.loan.type</field>
+            <field name="arch" type="xml">
+                <form string="Employee Loan Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee"/>
+                                <field name="loan_limit"/>
+                                <field name="loan_term"/>
+                                <field name="account_id"/>
+                                <field name="interest_account"/>
+                            </group>
+                            <group>
+                                <field name="apply_interest"/>
+                                <field name="interest_rate"/>
+                                <field name="interest_type"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_employee_loan_type_tree" model="ir.ui.view">
+            <field name="name">employee.loan.type.tree</field>
+            <field name="model">employee.loan.type</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Loan Types">
+                    <field name="employee"/>
+                    <field name="loan_limit"/>
+                    <field name="loan_term"/>
+                    <field name="interest_rate"/>
+                    <field name="account_id"/>
+                    <field name="interest_type"/>
+                    <field name="interest_account"/>
+                </tree>
+            </field>
+        </record>
+
+    <record id="action_employee_loan_type" model="ir.actions.act_window">
+            <field name="name">Employee Loan Types</field>
+            <field name="res_model">employee.loan.type</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        </data>
+        </odoo>
